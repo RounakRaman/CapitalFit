@@ -44,7 +44,7 @@ is_paused = sys_state.get("agent_paused", False)
 
 # Sidebar Header & Role Switcher
 with st.sidebar:
-    st.image("https://upload.wikimedia.org/wikipedia/commons/ thumb/8/87/Angel_One_logo.png/640px-Angel_One_logo.png", width=180) if False else st.markdown("## ⚡ **Angel One NBU**")
+    st.markdown("## ⚡ **Angel One NBU**")
     st.markdown("### **CapitalFit Ops Console**")
     st.caption("Stage 1 — MTF / LAS Headroom Agent")
     st.divider()
@@ -119,7 +119,7 @@ with col_right:
     - **📊 1_Dashboard**: Live funnel metrics, A/B lift charts, revenue tracking.
     - **🔍 2_Cohort_Explorer**: Searchable database of client holdings & eligibility.
     - **⏱️ 3_Decision_Replay**: Instant trace reconstruction for auditability.
-    - **📈 4_Scenario_Simulator**: Interactive policy & financial ROI what-if tool.
+    - **📈 4_Scenario_Simulator**: Interactive policy & financial ROI what-if simulator.
     - **🛡️ 5_Admin_Overrides**: Master Kill Switch and manual account exclusions.
     """)
 
