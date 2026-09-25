@@ -131,7 +131,7 @@ fig_sens.update_layout(
     yaxis2=dict(title="Contribution ROI (x)", overlaying="y", side="right"),
     margin=dict(l=20, r=20, t=30, b=20),
     height=400,
-    legend=dict(orient="h", y=1.1),
+    legend=dict(orientation="h", y=1.1),  # Fixed: orientation="h"
 )
 
 st.plotly_chart(fig_sens, use_container_width=True)
