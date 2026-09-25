@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  capitalfit-console:
+    build: .
+    container_name: capitalfit_console
+    ports:
+      - "8501:8501"
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
