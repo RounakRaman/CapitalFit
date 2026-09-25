@@ -1,1 +1,28 @@
-
+# CapitalFit Console Role-Based Access Control Configuration
+roles:
+  Ops:
+    description: "Operations & Servicing Team"
+    allowed_pages:
+      - "1_Dashboard.py"
+      - "2_Cohort_Explorer.py"
+  Compliance:
+    description: "Compliance & Regulatory Audit Team"
+    allowed_pages:
+      - "1_Dashboard.py"
+      - "2_Cohort_Explorer.py"
+      - "3_Decision_Replay.py"
+  Product:
+    description: "NBU Product & Business Solutions"
+    allowed_pages:
+      - "1_Dashboard.py"
+      - "2_Cohort_Explorer.py"
+      - "3_Decision_Replay.py"
+      - "4_Scenario_Simulator.py"
+  Risk:
+    description: "Angel Fincap Risk & Credit Ops (Full Access)"
+    allowed_pages:
+      - "1_Dashboard.py"
+      - "2_Cohort_Explorer.py"
+      - "3_Decision_Replay.py"
+      - "4_Scenario_Simulator.py"
+      - "5_Admin_Overrides.py"
