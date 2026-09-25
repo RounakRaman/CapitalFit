@@ -48,7 +48,7 @@ col_f, col_l = st.columns([1, 1])
 
 with col_f:
     st.subheader("🔻 Conversion Funnel Telemetry")
-    funnel_stages = ["Eligible Cohort", "Decisions Evaluated", "Nudges Sent", "Consents Accepted"]
+    funnel_stages = ["Eligible Cohort", "Decisions Evaluated", "Nudges Sent", "Consented / Funded"]
     funnel_values = [
         funnel_summary["total_accounts"],
         funnel_summary["evaluated_decisions"],
@@ -69,7 +69,6 @@ with col_f:
 
 with col_l:
     st.subheader("🧪 Treatment vs Control Utilisation Lift")
-    # Simulate time series for A/B cohort utilisation rate over 12 weeks
     weeks = [f"W{i}" for i in range(1, 13)]
     control_util = [24.1, 24.3, 24.2, 24.5, 24.4, 24.6, 24.5, 24.7, 24.6, 24.8, 24.7, 24.9]
     treatment_util = [24.2, 24.8, 25.4, 26.1, 26.8, 27.5, 28.2, 28.9, 29.5, 30.1, 30.8, 31.5]
@@ -77,7 +76,6 @@ with col_l:
     ci_lower = [u - 0.6 for u in treatment_util]
 
     fig_lift = go.Figure()
-    # Confidence interval band
     fig_lift.add_trace(
         go.Scatter(
             x=weeks + weeks[::-1],
@@ -90,11 +88,9 @@ with col_l:
             name="95% CI",
         )
     )
-    # Treatment line
     fig_lift.add_trace(
         go.Scatter(x=weeks, y=treatment_util, mode="lines+markers", name="Treatment Group (Nudged)", line=dict(color="#0F62FE", width=3))
     )
-    # Control line
     fig_lift.add_trace(
         go.Scatter(x=weeks, y=control_util, mode="lines+markers", name="Control Group (Held-out)", line=dict(color="#8D8D8D", width=2, dash="dash"))
     )
@@ -104,7 +100,7 @@ with col_l:
         xaxis_title="Pilot Timeline (Weeks)",
         margin=dict(l=20, r=20, t=30, b=20),
         height=350,
-        legend=dict(orient="h", y=1.1),
+        legend=dict(orientation="h", y=1.1),  # Fixed: orientation="h"
     )
     st.plotly_chart(fig_lift, use_container_width=True)
 
@@ -115,7 +111,7 @@ st.subheader("📈 Revenue Trajectory vs Model Benchmark")
 
 months = [f"Month {i}" for i in range(1, 13)]
 base_model_trajectory = [0.36, 0.73, 1.10, 1.47, 1.84, 2.20, 2.57, 2.94, 3.31, 3.68, 4.05, 4.41]
-realized_trajectory = [0.38, 0.76, 1.15, 1.54] + [None] * 8  # Live tracking up to M4
+realized_trajectory = [0.38, 0.76, 1.15, 1.54] + [None] * 8
 
 fig_rev = go.Figure()
 fig_rev.add_trace(go.Scatter(x=months, y=base_model_trajectory, mode="lines", name="Year-1 Base Case Target (₹4.41 Cr Net)", line=dict(color="#10B981", width=2, dash="dot")))
@@ -125,7 +121,7 @@ fig_rev.update_layout(
     yaxis_title="Cumulative Net Contribution (₹ Crores)",
     margin=dict(l=20, r=20, t=30, b=20),
     height=320,
-    legend=dict(orient="h", y=1.1),
+    legend=dict(orientation="h", y=1.1),  # Fixed: orientation="h"
 )
 st.plotly_chart(fig_rev, use_container_width=True)
 
